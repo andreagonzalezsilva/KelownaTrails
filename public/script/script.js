@@ -7,8 +7,8 @@ Instructor: Washington Valencia
 ENTER STUDENT INFORMATION HERE 
 ==========================================
 CCTB project DevOps course
-STUDENT NAME: 
-STUDENT ID:
+STUDENT NAME: Andrea Gonzalez Silva
+STUDENT ID: CT1005545
 SQAC114
 ==========================================
 
@@ -150,9 +150,14 @@ function AddGroupMember(lastName, firstName) {
 * Function to remove (delete) a selected group member from the selection list.
 * 
 */
-function RemoveGroupMember() {
-
-	throw "ERROR! You must work in this function before to send to Staging Environment!";
+function RemoveGroupMember(lastName, firstName) {
+	let selectedIndex = membersLst.selectedIndex;
+	if(selectedIndex !== -1){
+		membersLst.options[selectedIndex].remove();
+	}
+	else{
+		alert('Please select a member to delete.')
+	}
 
 }
 
