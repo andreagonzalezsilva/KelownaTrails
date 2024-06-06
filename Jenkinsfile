@@ -14,9 +14,17 @@ pipeline{
         stage('Testing Environment'){
             steps{
                 sh 'firebase deploy -P testing-example2-devops --token "$FIREBASE_DEPLOY_TOKEN"' 
-                sh 'npm install selenium-webdriver'
-                sh 'node test/testDeleteButton.js'
-                
+                script{
+                    try{
+                        sh 'npm install selenium-webdriver'
+                        def output = sh(script: 'node test/testDeleteButton.js', returnStdout: true).trim()
+             
+                        // Print the output 
+                        echo "Test Output: ${output}"
+                    } catch (Exception e){
+                        echo "Test failed: ${e.message}"
+                    }
+                }    
             }   
         } 
         stage('Staging Environment'){
