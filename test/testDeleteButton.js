@@ -55,7 +55,7 @@ const expectedMembersAfterDeletion = 0;
     // Validate the member has been deleted
     let foundMembers = await driver.findElements(By.xpath('//*[@id="members"]/option'));
     if(foundMembers.length === expectedMembersAfterDeletion){
-        console.log('Test Sucess');
+        console.log('Test Success');
     } else{
         console.log('Test Failed');
     }
