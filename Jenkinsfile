@@ -35,7 +35,8 @@ pipeline{
                         echo "Test failed: ${e.message}"
                         writeFile file: env.TEST_RESULT_FILE, text: 'false'
                     }
-                }   
+                }
+            }   
         } 
         stage('Staging Environment'){
             steps{
