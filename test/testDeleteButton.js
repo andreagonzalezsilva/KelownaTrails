@@ -1,14 +1,22 @@
 const {By, Builder, Browser} = require('selenium-webdriver');
+const chrome = require("selenium-webdriver/chrome");
 const assert = require("assert");
 const expectedTitle = "DevOps Bonus Project - CCTB";
 const expectedMemberName = "Test, Selenium";
 const expectedMembersAfterDeletion = 0;
 
 (async function deleteButtonTest() {
+
+  // Set Chrome option
+  let options = new chrome.Options();
+  options.addArguments('headless');
+  options.addArguments('disable-gpu');
+  options.setChromeBinaryPath('/usr/bin/google-chrome');
+
   let driver;
   
   try {
-    driver = await new Builder().forBrowser(Browser.CHROME).build();
+    driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
     await driver.get('https://testing-example2-devops.web.app/');
 
     // Maxime the window
@@ -49,7 +57,5 @@ const expectedMembersAfterDeletion = 0;
     assert.equal(foundMembers.length, expectedMembersAfterDeletion);
   } catch (e) {
     console.log(e)
-  } finally {
-    await driver.quit();
-  }
+  } 
 }())

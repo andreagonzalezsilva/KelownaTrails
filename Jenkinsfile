@@ -13,6 +13,8 @@ pipeline{
         stage('Testing Environment'){
             steps{
             sh 'firebase deploy -P testing-example2-devops --token "$FIREBASE_DEPLOY_TOKEN"'
+            sh 'npm install selenium-webdriver'
+            sh 'node test/testDeleteButton.js'
             input message: 'After testing. Do you want to continue with Staging Environment? (Click "Proceed" to continue)', ok: 'Proceed'
             }
         } 
