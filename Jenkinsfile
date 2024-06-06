@@ -20,7 +20,7 @@ pipeline{
                         sh 'npm install selenium-webdriver'
 
                         // Run the test and capture the output
-                        def output = sh(script: 'node test/test1.js', returnStdout: true).trim()
+                        def output = sh(script: 'node test/testDeleteButton.js', returnStdout: true).trim()
 
                         // Print the output 
                         echo "Test Output: ${output}"
